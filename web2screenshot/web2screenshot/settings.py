@@ -38,6 +38,7 @@ SPLASH_URL = 'http://0.0.0.0:8050'
 SPLASH_ARGS = {'wait': 0.5,
                'timeout': 30,
                'jpeg': 1,
+               'html': 1,
                'quality': 95,
                'render_all': 1}
 
