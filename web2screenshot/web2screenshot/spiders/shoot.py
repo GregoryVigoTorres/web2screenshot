@@ -13,7 +13,7 @@ from scrapy_splash import SplashRequest
 class ShootSpider(scrapy.Spider):
     name = "shoot"
     # allowed_domains = []
-    start_urls = ['https://thoughtmaybe.com/']
+    start_urls = []
     link_urls = []
 
     def start_requests(self):
@@ -77,7 +77,7 @@ class ShootSpider(scrapy.Spider):
         fn = fn.rstrip('.')
         fn+= '.jpeg'
 
-        self.logger.info(f'{Fore.RED}{response.url} -> {fn}{Style.RESET_ALL}')
+        self.logger.info(f'{Fore.CYAN}{response.url} -> {fn}{Style.RESET_ALL}')
 
         img = base64.b64decode(response.data['jpeg'])
 
