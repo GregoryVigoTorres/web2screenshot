@@ -1,2 +1,4 @@
 .scrapy
 .tags
+.sass-cache
+*.css.map

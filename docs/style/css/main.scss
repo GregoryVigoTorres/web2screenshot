@@ -1,0 +1,95 @@
+@font-face {
+  font-family: "RobotoMono-Medium";
+  src: url("style/fonts/RobotoMono_Medium/RobotoMono-Medium.ttf");
+  style: "normal";
+}
+
+body, html {
+  min-height: 100vh;
+  font-family: "RobotoMono-Medium", "mono", "sans-serif";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  height: 100%;
+
+  div {
+    margin: auto;
+    padding: 2rem;
+  }
+
+  #content {
+    text-align: center;
+    background-color: #929292;
+    background-color: #ABABAB;
+    box-shadow: 3px 3px 3px black;
+
+    a {
+      text-decoration: none;
+      padding: 0 2px 0 2px;
+      background-color: #616161;
+      color: #B7DBFF;
+      font-weight: 800;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    h2 {
+      align-self: center;
+      margin: 0 0 0 0;
+    }
+  }
+}
+
+footer {
+  font-size: 75%;
+  position: absolute;
+  padding: 2rem 1rem;
+  bottom: 0;
+}
+
+@media screen and (max-width: 700px) {
+  #main {
+    flex-direction: column-reverse;
+
+    div {
+      flex-basis: 100%;
+      margin: 0 0 0 0;
+    }
+
+    #content {
+      box-shadow: 0px 0px 1rem black;
+    }
+  }
+
+  footer {
+    position: static;
+    font-size: .5rem;
+  }
+
+  svg {
+    max-width: 100%;
+  }
+}
+
+// iPad, tablet
+@media screen and (min-width: 701px) and (max-width: 1024px) {
+  #main {
+    flex-direction: column;
+
+    #logo {
+      svg {
+        max-width: 100%;
+      }
+    }
+  }
+}
