@@ -70,14 +70,28 @@ class ShootSpider(scrapy.Spider):
         self.link_urls.extend(hrefs)
         return set(hrefs)
 
-    def parse(self, response):
-        fn = response.url.replace('http://', '')
-        fn = response.url.replace('https://', '')
-        fn = fn.replace('/', '.')
-        fn = fn.rstrip('.')
-        fn+= '.jpeg'
+    def get_filename(self, response):
+        """
+        filename for jpeg screenshot
+        """
+        fn = response.url.rstrip('/')
+        fn = fn.replace('http://', '').\
+                replace('https://', '').\
+                replace('www.', '').\
+                replace('/', '_')
 
-        self.logger.info(f'{Fore.CYAN}{response.url} -> {fn}{Style.RESET_ALL}')
+        if len(fn) > 80:
+            fn = fn[0:80]
+
+        return fn+'.jpeg'
+
+    def parse(self, response):
+        fn = self.get_filename(response)
+
+        self.logger.info('{}{} -> {}{}'.format(Fore.CYAN,
+                                               response.url,
+                                               fn,
+                                               Style.RESET_ALL))
 
         img = base64.b64decode(response.data['jpeg'])
 
